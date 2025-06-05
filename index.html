@@ -26,20 +26,21 @@
       z-index: 1000;
       color: #ff9800;
     }
-  .footer img {
-    width: 60px;
-    height: 60px;
-    object-fit: cover; /* or 'contain' if you want full image */
-    border-radius: 50%;
-    vertical-align: middle;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-    text-align: right;
-    
-  }
-  .footer {
-    background: #1e1e1e;
-    padding: 20px;
-  }
+
+    .footer img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 50%;
+      vertical-align: middle;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    .footer {
+      background: #1e1e1e;
+      padding: 20px;
+      text-align: center;
+    }
 
     #memes-container {
       display: flex;
@@ -60,7 +61,7 @@
       position: relative;
     }
 
-    img {
+    .meme img {
       width: 100%;
       border-radius: 8px;
     }
@@ -95,7 +96,7 @@
     }
 
     .liked {
-      color: #e53935; /* Red when liked */
+      color: #e53935;
     }
 
     button {
@@ -121,8 +122,11 @@
 <body>
 
   <h1>🔥 MemoGraphy</h1>
-    <script async="async" data-cfasync="false" src="//pl26246949.profitableratecpm.com/8c39079b0ff6cc28a0a1802ee89dbde4/invoke.js"></script>
+
+  <!-- Ads Script -->
+  <script async="async" data-cfasync="false" src="//pl26246949.profitableratecpm.com/8c39079b0ff6cc28a0a1802ee89dbde4/invoke.js"></script>
   <div id="container-8c39079b0ff6cc28a0a1802ee89dbde4"></div>
+
   <div id="memes-container"></div>
 
   <!-- Meme Fetch Script -->
@@ -158,136 +162,25 @@
       $(this).toggleClass("liked");
     });
 
-    // View More button
-    $(document).on("click", "#view-more", function () {
-      loadMemes();
-    });
-  </script>
-  <script>
-    function loadMemes(count = 10) {
-      fetch(`https://meme-api.com/gimme/${count}`)
-        .then(response => response.json())
-        .then(data => {
-          const memes = data.memes || [data];
-          const container = $("#memes-container");
-
-          memes.forEach(meme => {
-            const memeHTML = `
-              <div class="meme">
-                <h2>${meme.title}</h2>
-                <a href="${meme.postLink}" target="_blank">
-                  <img src="${meme.url}" alt="${meme.title}" />
-                </a>
-                <p><em>Subreddit: r/${meme.subreddit}</em></p>
-                <div class="like-btn">&#10084;</div>
-              </div>
-            `;
-            container.append(memeHTML);
-          });
-        });
-    }
-
-    // Load memes initially
-    loadMemes();
-
-    // Like button toggle
-    $(document).on("click", ".like-btn", function () {
-      $(this).toggleClass("liked");
-    });
-
-    // View More button
-    $(document).on("click", "#view-more", function () {
-      loadMemes();
-    });
-  </script>
-
-    <script>
-    function loadMemes(count = 10) {
-      fetch(`https://meme-api.com/gimme/${count}`)
-        .then(response => response.json())
-        .then(data => {
-          const memes = data.memes || [data];
-          const container = $("#memes-container");
-
-          memes.forEach(meme => {
-            const memeHTML = `
-              <div class="meme">
-                <h2>${meme.title}</h2>
-                <a href="${meme.postLink}" target="_blank">
-                  <img src="${meme.url}" alt="${meme.title}" />
-                </a>
-                <p><em>Subreddit: r/${meme.subreddit}</em></p>
-                <div class="like-btn">&#10084;</div>
-              </div>
-            `;
-            container.append(memeHTML);
-          });
-        });
-    }
-
-    // Load memes initially
-    loadMemes();
-
-    // Like button toggle
-    $(document).on("click", ".like-btn", function () {
-      $(this).toggleClass("liked");
-    });
-
-    // View More button
-    $(document).on("click", "#view-more", function () {
-      loadMemes();
-    });
-  </script>
-
-    <script>
-    function loadMemes(count = 10) {
-      fetch(`https://meme-api.com/gimme/${count}`)
-        .then(response => response.json())
-        .then(data => {
-          const memes = data.memes || [data];
-          const container = $("#memes-container");
-
-          memes.forEach(meme => {
-            const memeHTML = `
-              <div class="meme">
-                <h2>${meme.title}</h2>
-                <a href="${meme.postLink}" target="_blank">
-                  <img src="${meme.url}" alt="${meme.title}" />
-                </a>
-                <p><em>Subreddit: r/${meme.subreddit}</em></p>
-                <div class="like-btn">&#10084;</div>
-              </div>
-            `;
-            container.append(memeHTML);
-          });
-        });
-    }
-
-    // Load memes initially
-    loadMemes();
-
-    // Like button toggle
-    $(document).on("click", ".like-btn", function () {
-      $(this).toggleClass("liked");
-    });
-
-    // View More button
+    // View More button click
     $(document).on("click", "#view-more", function () {
       loadMemes();
     });
   </script>
 
   <!-- Ad scripts -->
-
-
   <script async="async" data-cfasync="false" src="//pl26246944.profitableratecpm.com/cbc028c5e6af088f3348ea2cdfef0db4/invoke.js"></script>
   <div id="container-cbc028c5e6af088f3348ea2cdfef0db4"></div>
 
   <!-- View More Button -->
-  <a href="https://samjoel2007.github.io/MemoGraphy/"><button id="view-more">VIEW MORE</button></a>
-<div class="footer">
-    <a href="https://samjoel2007.github.io/HackerVan/images/me.jpg"><img src="https://samjoel2007.github.io/HackerVan/images/me.jpg"></a>
+  <button id="view-more">VIEW MORE</button>
+
+  <div class="footer">
+    <a href="https://samjoel2007.github.io/HackerVan/images/me.jpg" target="_blank">
+      <img src="https://samjoel2007.github.io/HackerVan/images/me.jpg" alt="Sam" />
+    </a>
     <p><b>Developer: Sam</b></p>
-</div>
+  </div>
+
 </body>
 </html>
