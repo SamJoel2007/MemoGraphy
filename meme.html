@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MemoGraphy - Memes!</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #121212;
+      color: #e0e0e0;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 20px;
+      background: #1e1e1e;
+      margin: 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      color: #ff9800;
+    }
+
+    #memes-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .meme {
+      margin: 20px 0;
+      padding: 10px;
+      border: 2px solid #333;
+      border-radius: 10px;
+      background: #1e1e1e;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+      position: relative;
+    }
+
+    img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    h2 {
+      font-size: 1.1em;
+      margin: 10px 0;
+      color: #ffcc00;
+    }
+
+    p {
+      font-size: 0.9em;
+      color: #bbb;
+    }
+
+    a {
+      color: #90caf9;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .like-btn {
+      font-size: 1.5em;
+      cursor: pointer;
+      user-select: none;
+      color: #888;
+      transition: color 0.2s ease;
+      margin-top: 8px;
+    }
+
+    .liked {
+      color: #e53935; /* Red when liked */
+    }
+
+    button {
+      background-color: #ff9800;
+      color: #000;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1em;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 20px auto;
+      display: block;
+    }
+
+    button:hover {
+      background-color: #e68900;
+    }
+  </style>
+
+  <!-- jQuery CDN -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+  <h1>🔥 MemoGraphy</h1>
+    <script async="async" data-cfasync="false" src="//pl26246949.profitableratecpm.com/8c39079b0ff6cc28a0a1802ee89dbde4/invoke.js"></script>
+  <div id="container-8c39079b0ff6cc28a0a1802ee89dbde4"></div>
+  <div id="memes-container"></div>
+
+  <!-- Meme Fetch Script -->
+  <script>
+    function loadMemes(count = 10) {
+      fetch(`https://meme-api.com/gimme/${count}`)
+        .then(response => response.json())
+        .then(data => {
+          const memes = data.memes || [data];
+          const container = $("#memes-container");
+
+          memes.forEach(meme => {
+            const memeHTML = `
+              <div class="meme">
+                <h2>${meme.title}</h2>
+                <a href="${meme.postLink}" target="_blank">
+                  <img src="${meme.url}" alt="${meme.title}" />
+                </a>
+                <p><em>Subreddit: r/${meme.subreddit}</em></p>
+                <div class="like-btn">&#10084;</div>
+              </div>
+            `;
+            container.append(memeHTML);
+          });
+        });
+    }
+
+    // Load memes initially
+    loadMemes();
+
+    // Like button toggle
+    $(document).on("click", ".like-btn", function () {
+      $(this).toggleClass("liked");
+    });
+
+    // View More button
+    $(document).on("click", "#view-more", function () {
+      loadMemes();
+    });
+  </script>
+
+  <!-- Ad scripts -->
+
+
+  <script async="async" data-cfasync="false" src="//pl26246944.profitableratecpm.com/cbc028c5e6af088f3348ea2cdfef0db4/invoke.js"></script>
+  <div id="container-cbc028c5e6af088f3348ea2cdfef0db4"></div>
+
+  <!-- View More Button -->
+  <button id="view-more">VIEW MORE</button>
+
+</body>
+</html>
