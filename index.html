@@ -1,54 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>MemoGraphy - Memes!</title>
   <style>
     * {
       box-sizing: border-box;
     }
-
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background: #121212;
       color: #e0e0e0;
     }
-
     h1 {
       text-align: center;
       padding: 20px;
       background: #1e1e1e;
       margin: 0;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.4);
       position: sticky;
       top: 0;
       z-index: 1000;
       color: #ff9800;
     }
-
     .footer img {
       width: 60px;
       height: 60px;
       object-fit: cover;
       border-radius: 50%;
       vertical-align: middle;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+      text-align: right;
     }
-
     .footer {
       background: #1e1e1e;
       padding: 20px;
       text-align: center;
     }
-
-    #memes-container {
+    #memes-container,
+    #anime-memes-container {
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 20px;
     }
-
     .meme {
       margin: 20px 0;
       padding: 10px;
@@ -57,35 +53,29 @@
       background: #1e1e1e;
       width: 90%;
       max-width: 500px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.6);
       position: relative;
     }
-
-    .meme img {
+    img {
       width: 100%;
       border-radius: 8px;
     }
-
     h2 {
       font-size: 1.1em;
       margin: 10px 0;
       color: #ffcc00;
     }
-
     p {
       font-size: 0.9em;
       color: #bbb;
     }
-
     a {
       color: #90caf9;
       text-decoration: none;
     }
-
     a:hover {
       text-decoration: underline;
     }
-
     .like-btn {
       font-size: 1.5em;
       cursor: pointer;
@@ -94,11 +84,9 @@
       transition: color 0.2s ease;
       margin-top: 8px;
     }
-
     .liked {
       color: #e53935;
     }
-
     button {
       background-color: #ff9800;
       color: #000;
@@ -110,7 +98,6 @@
       margin: 20px auto;
       display: block;
     }
-
     button:hover {
       background-color: #e68900;
     }
@@ -122,62 +109,94 @@
 <body>
 
   <h1>🔥 MemoGraphy</h1>
-
-  <!-- Ads Script -->
-  <script async="async" data-cfasync="false" src="//pl26246949.profitableratecpm.com/8c39079b0ff6cc28a0a1802ee89dbde4/invoke.js"></script>
   <div id="container-8c39079b0ff6cc28a0a1802ee89dbde4"></div>
 
+  <!-- Regular Memes -->
   <div id="memes-container"></div>
+  <button id="view-more">VIEW MORE MEMES</button>
 
-  <!-- Meme Fetch Script -->
+  <!-- Anime Memes Section -->
+  <h1>🌸 Anime Memes</h1>
+  <div id="anime-memes-container"></div>
+  <button id="view-anime">VIEW MORE ANIME MEMES</button>
+
+  <!-- Script to load memes -->
   <script>
+    // Load regular memes, count defines how many memes to fetch
     function loadMemes(count = 10) {
       fetch(`https://meme-api.com/gimme/${count}`)
-        .then(response => response.json())
+        .then(res => res.json())
         .then(data => {
           const memes = data.memes || [data];
           const container = $("#memes-container");
-
           memes.forEach(meme => {
             const memeHTML = `
               <div class="meme">
                 <h2>${meme.title}</h2>
-                <a href="${meme.postLink}" target="_blank">
+                <a href="${meme.postLink}" target="_blank" rel="noopener noreferrer">
                   <img src="${meme.url}" alt="${meme.title}" />
                 </a>
                 <p><em>Subreddit: r/${meme.subreddit}</em></p>
                 <div class="like-btn">&#10084;</div>
-              </div>
-            `;
+              </div>`;
             container.append(memeHTML);
           });
-        });
+        })
+        .catch(err => console.error("Error loading memes:", err));
     }
 
-    // Load memes initially
+    // Load anime memes from multiple subreddits in one request
+    function loadAnimeMemes(count = 15) {
+      const subreddits = "animememes+goodanimemes+AnimeFunny+NarutoMemes+WaifuAnime+FunnyAnimeMemes";
+      fetch(`https://meme-api.com/gimme/${subreddits}/${count}`)
+        .then(res => res.json())
+        .then(data => {
+          const memes = data.memes || [data];
+          const container = $("#anime-memes-container");
+          memes.forEach(meme => {
+            const memeHTML = `
+              <div class="meme">
+                <h2>${meme.title}</h2>
+                <a href="${meme.postLink}" target="_blank" rel="noopener noreferrer">
+                  <img src="${meme.url}" alt="${meme.title}" />
+                </a>
+                <p><em>Subreddit: r/${meme.subreddit}</em></p>
+                <div class="like-btn">&#10084;</div>
+              </div>`;
+            container.append(memeHTML);
+          });
+        })
+        .catch(err => console.error("Error loading anime memes:", err));
+    }
+
+    // Initial load on page open
     loadMemes();
+    loadAnimeMemes();
+
+    // Button event handlers to load more memes
+    $(document).on("click", "#view-more", function () {
+      loadMemes();
+    });
+
+    $(document).on("click", "#view-anime", function () {
+      loadAnimeMemes();
+    });
 
     // Like button toggle
     $(document).on("click", ".like-btn", function () {
       $(this).toggleClass("liked");
     });
-
-    // View More button click
-    $(document).on("click", "#view-more", function () {
-      loadMemes();
-    });
   </script>
 
   <!-- Ad scripts -->
+  <script async="async" data-cfasync="false" src="//pl26246949.profitableratecpm.com/8c39079b0ff6cc28a0a1802ee89dbde4/invoke.js"></script>
   <script async="async" data-cfasync="false" src="//pl26246944.profitableratecpm.com/cbc028c5e6af088f3348ea2cdfef0db4/invoke.js"></script>
   <div id="container-cbc028c5e6af088f3348ea2cdfef0db4"></div>
 
-  <!-- View More Button -->
-  <button id="view-more">VIEW MORE</button>
-
+  <!-- Footer -->
   <div class="footer">
-    <a href="https://samjoel2007.github.io/HackerVan/images/me.jpg" target="_blank">
-      <img src="https://samjoel2007.github.io/HackerVan/images/me.jpg" alt="Sam" />
+    <a href="https://samjoel2007.github.io/HackerVan/images/me.jpg" target="_blank" rel="noopener noreferrer">
+      <img src="https://samjoel2007.github.io/HackerVan/images/me.jpg" alt="Developer Image" />
     </a>
     <p><b>Developer: Sam</b></p>
   </div>
