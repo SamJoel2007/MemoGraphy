@@ -31,7 +31,6 @@
       border-radius: 50%;
       vertical-align: middle;
       box-shadow: 0 2px 4px rgba(0,0,0,0.4);
-      text-align: right;
     }
     .footer {
       background: #1e1e1e;
@@ -101,86 +100,110 @@
     button:hover {
       background-color: #e68900;
     }
+
+    /* Twitter timelines container */
+    #twitter-feeds {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+      background: #1e1e1e;
+    }
+    .twitter-timeline-wrapper {
+      flex: 1 1 300px;
+      max-width: 350px;
+      background: #121212;
+      border: 2px solid #333;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.6);
+      padding: 10px;
+    }
   </style>
 
-  <!-- jQuery CDN -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
+  <div style="text-align: right; background: #1e1e1e; padding: 10px 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.4); position: sticky; top: 0; z-index: 1001;">
+    <a href="https://drive.google.com/file/d/1U9XNfuUNpTJ_eMeH2hVOk9qzBwxhn6Mb/view?usp=sharing" target="_blank" style="background-color: #ff9800; color: black; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold;">
+      💲 DONATE
+    </a>&nbsp;&nbsp;
+    <a href="https://drive.google.com/file/d/1U9XNfuUNpTJ_eMeH2hVOk9qzBwxhn6Mb/view?usp=sharing" target="_blank" style="background-color: #ff9800; color: black; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold;">
+      📥 DOWNLOAD APP
+    </a>
+  </div>
 
   <h1>🔥 MemoGraphy</h1>
-  <div id="container-8c39079b0ff6cc28a0a1802ee89dbde4"></div>
-
-  <!-- Regular Memes -->
   <div id="memes-container"></div>
   <button id="view-more">VIEW MORE MEMES</button>
 
-  <!-- Anime Memes Section -->
   <h1>🌸 Anime Memes</h1>
   <div id="anime-memes-container"></div>
   <button id="view-anime">VIEW MORE ANIME MEMES</button>
 
-  <!-- Script to load memes -->
+  <!-- Twitter hashtag feeds -->
+  <h1>🐦 Twitter Anime Hashtags</h1>
+  <div id="twitter-feeds">
+    <div class="twitter-timeline-wrapper">
+      <a class="twitter-timeline" data-theme="dark" data-height="400" href="https://twitter.com/hashtag/AnimeMemes?ref_src=twsrc%5Etfw">
+        #AnimeMemes Tweets
+      </a>
+    </div>
+    <div class="twitter-timeline-wrapper">
+      <a class="twitter-timeline" data-theme="dark" data-height="400" href="https://twitter.com/hashtag/SoloLeveling?ref_src=twsrc%5Etfw">
+        #SoloLeveling Tweets
+      </a>
+    </div>
+    <div class="twitter-timeline-wrapper">
+      <a class="twitter-timeline" data-theme="dark" data-height="400" href="https://twitter.com/hashtag/Anime?ref_src=twsrc%5Etfw">
+        #Anime Tweets
+      </a>
+    </div>
+  </div>
+
   <script>
-    // Load regular memes, count defines how many memes to fetch
+    function createMemeHTML(meme) {
+      return `
+        <div class="meme">
+          <h2>${meme.title}</h2>
+          <a href="${meme.postLink}" target="_blank" rel="noopener noreferrer">
+            <img src="${meme.url}" alt="${meme.title}" />
+          </a>
+          <p><em>Subreddit: r/${meme.subreddit}</em></p>
+          <div class="like-btn">&#10084;</div>
+        </div>`;
+    }
+
     function loadMemes(count = 10) {
       fetch(`https://meme-api.com/gimme/${count}`)
         .then(res => res.json())
         .then(data => {
           const memes = data.memes || [data];
           const container = $("#memes-container");
-          memes.forEach(meme => {
-            const memeHTML = `
-              <div class="meme">
-                <h2>${meme.title}</h2>
-                <a href="${meme.postLink}" target="_blank" rel="noopener noreferrer">
-                  <img src="${meme.url}" alt="${meme.title}" />
-                </a>
-                <p><em>Subreddit: r/${meme.subreddit}</em></p>
-                <div class="like-btn">&#10084;</div>
-              </div>`;
-            container.append(memeHTML);
-          });
+          memes.forEach(meme => container.append(createMemeHTML(meme)));
         })
         .catch(err => console.error("Error loading memes:", err));
     }
 
-    // Load anime memes from multiple subreddits in one request
     function loadAnimeMemes(count = 15) {
-      const subreddits = "animememes+goodanimemes+AnimeFunny+NarutoMemes+WaifuAnime+FunnyAnimeMemes";
-      fetch(`https://meme-api.com/gimme/${subreddits}/${count}`)
+      const animeSubs = "Animemes+AnimeFunny+NarutoMemes+WaifuAnime+FunnyAnimeMemes+goodanimemes+anime+anime_irl+animequestions+sololevelling";
+      fetch(`https://meme-api.com/gimme/${animeSubs}/${count}`)
         .then(res => res.json())
         .then(data => {
           const memes = data.memes || [data];
           const container = $("#anime-memes-container");
-          memes.forEach(meme => {
-            const memeHTML = `
-              <div class="meme">
-                <h2>${meme.title}</h2>
-                <a href="${meme.postLink}" target="_blank" rel="noopener noreferrer">
-                  <img src="${meme.url}" alt="${meme.title}" />
-                </a>
-                <p><em>Subreddit: r/${meme.subreddit}</em></p>
-                <div class="like-btn">&#10084;</div>
-              </div>`;
-            container.append(memeHTML);
-          });
+          memes.forEach(meme => container.append(createMemeHTML(meme)));
         })
         .catch(err => console.error("Error loading anime memes:", err));
     }
 
-    // Initial load on page open
+    // Initial Load
     loadMemes();
     loadAnimeMemes();
 
-    // Button event handlers to load more memes
-    $(document).on("click", "#view-more", function () {
-      loadMemes();
-    });
-
-    $(document).on("click", "#view-anime", function () {
-      loadAnimeMemes();
-    });
+    // Button handlers
+    $(document).on("click", "#view-more", () => loadMemes());
+    $(document).on("click", "#view-anime", () => loadAnimeMemes());
 
     // Like button toggle
     $(document).on("click", ".like-btn", function () {
@@ -188,18 +211,19 @@
     });
   </script>
 
-  <!-- Ad scripts -->
-  <script async="async" data-cfasync="false" src="//pl26246949.profitableratecpm.com/8c39079b0ff6cc28a0a1802ee89dbde4/invoke.js"></script>
-  <script async="async" data-cfasync="false" src="//pl26246944.profitableratecpm.com/cbc028c5e6af088f3348ea2cdfef0db4/invoke.js"></script>
+  <!-- Twitter widgets script -->
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+  <!-- Ads -->
+  <script async data-cfasync="false" src="//pl26246949.profitableratecpm.com/8c39079b0ff6cc28a0a1802ee89dbde4/invoke.js"></script>
+  <script async data-cfasync="false" src="//pl26246944.profitableratecpm.com/cbc028c5e6af088f3348ea2cdfef0db4/invoke.js"></script>
   <div id="container-cbc028c5e6af088f3348ea2cdfef0db4"></div>
 
-  <!-- Footer -->
   <div class="footer">
     <a href="https://samjoel2007.github.io/HackerVan/images/me.jpg" target="_blank" rel="noopener noreferrer">
       <img src="https://samjoel2007.github.io/HackerVan/images/me.jpg" alt="Developer Image" />
     </a>
     <p><b>Developer: Sam</b></p>
   </div>
-
 </body>
 </html>
