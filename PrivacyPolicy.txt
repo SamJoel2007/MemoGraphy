@@ -1,0 +1,39 @@
+📜 Privacy Policy for MemoGraphy
+Effective Date: 09-06-2025
+
+MemoGraphy ("we", "our", or "us") respects your privacy. This Privacy Policy explains how we handle information when you use our app.
+
+1. Information We Collect
+We do not collect or store any personally identifiable information (PII) from users. MemoGraphy may use publicly available APIs to display content (e.g., memes, anime images, music), but we do not track who you are or what you do.
+
+2. Third-Party Services
+Our app may use third-party APIs or services, such as:
+
+Meme APIs
+
+Anime content APIs
+
+Music streaming sources
+
+These services may collect certain anonymous data (like IP address or usage logs) as per their own privacy policies. We encourage users to review those policies separately.
+
+3. Advertisements
+If the app shows ads, those are provided by third-party ad networks (e.g., AdMob, AppLovin, etc.). These may collect anonymous usage data to provide relevant ads. No personal data is shared by us.
+
+4. Children's Privacy
+MemoGraphy is not targeted at children under the age of 13. We do not knowingly collect data from children.
+
+5. Data Security
+Since we do not collect personal data, there's no personal data to secure. Still, we follow general best practices to ensure the app runs securely.
+
+6. Your Consent
+By using MemoGraphy, you consent to this privacy policy.
+
+7. Changes to This Policy
+We may update this policy from time to time. Any changes will be posted here with an updated effective date.
+
+8. Contact Us
+If you have any questions or concerns about this policy, feel free to contact us at:
+
+📧 samgladson9999@gmail.com
+🌐 samjoel2007.github.io/MemoGraphy/main.html
