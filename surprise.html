@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Random Anime Image</title>
+  <style>
+    body {
+      background-color: #1a1a2f;
+      color: #fefefe;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 40px;
+    }
+
+    #imageDisplay {
+      margin-top: 20px;
+    }
+
+    img {
+      max-width: 90%;
+      height: auto;
+      border: 4px solid #ff4ecb;
+      border-radius: 10px;
+    }
+
+    #caption {
+      margin-top: 15px;
+      font-size: 18px;
+      font-style: italic;
+      color: #ffb3f0;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      background-color: #ff4ecb;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #ff82db;
+    }
+  </style>
+</head>
+<body onload="showRandomImage()">
+
+  <h1>🎴 CONGRATULATIONS</h1>
+  <div id="caption">Loading...</div>
+
+  <div id="imageDisplay">
+    <img id="animeImage" src="" alt="Your anime image will appear here!" />
+  </div>
+
+  <script>
+    const images = [
+      {
+        url: "https://wallpaperaccess.com/full/8292127.jpg",
+        caption: "🔥 Uchiha Itachi - Download Free Wallpaper"
+      },
+      {
+        url: "https://staticg.sportskeeda.com/editor/2024/07/43aec-17206345621752-1920.jpg",
+        caption: "😍 You are on a Ice Cream date with alya "
+      },
+      {
+        url: "https://staticg.sportskeeda.com/editor/2024/09/ea708-17261341457963-1920.jpg",
+        caption: "💀 You are trapped in this room with Yuki"
+      },
+      {
+        url: "https://wallpapers-clan.com/wp-content/uploads/2023/10/naruto-kakashi-hatake-lightning-purple-desktop-wallpaper-preview.jpg",
+        caption: "⚔️ Kakashi - Download Free Wallpaper"
+      },
+      {
+        url: "https://media.tenor.com/acLHyusK_RkAAAAC/rick-roll.gif",
+        caption: "💀 SURPRIZE MF "
+      },
+      {
+        url: "https://static1.cbrimages.com/wordpress/wp-content/uploads/2022/03/Shikimori-1.jpg",
+        caption: "👻 Shikimori wants you to be her husband or else she will kill you!"
+      }
+    ];
+
+    function showRandomImage() {
+      const randomIndex = Math.floor(Math.random() * images.length);
+      const image = images[randomIndex];
+
+      document.getElementById("animeImage").src = image.url;
+      document.getElementById("caption").textContent = image.caption;
+    }
+  </script>
+
+</body>
+</html>
