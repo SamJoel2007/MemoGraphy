@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Otaku Guessing Game</title>
+  <style>
+    body {
+      background-color: #1a1a2f;
+      color: #fefefe;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      color: #ff4ecb;
+    }
+    .question-box {
+      margin-top: 30px;
+      background: #29293d;
+      padding: 20px;
+      border-radius: 10px;
+      display: inline-block;
+    }
+    .option {
+      background: #4d4d7a;
+      margin: 10px;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .option:hover {
+      background: #6e6ed8;
+    }
+    #reward {
+      margin-top: 20px;
+      display: none;
+      background: #00c853;
+      padding: 20px;
+      border-radius: 10px;
+      color: #000;
+    }
+    .download-btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 12px 25px;
+      background-color: #ff4ecb;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      text-decoration: none;
+    }
+    .download-btn:hover {
+      background-color: #ff82db;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    function Reward() {
+      alert("WORKING!");
+    }
+  </script>
+  <h1>🎌 Otaku Guessing Game</h1>
+  <p>Guess 3 anime characters correctly to win a surprise!</p>
+
+  <div class="question-box" id="quizBox">
+    <div id="question">Loading question...</div>
+    <div id="options"></div>
+  </div>
+
+  <div id="reward">
+    <h2>🎉 You won, senpai!</h2>
+    <p>Claim your free Reward:</p>
+    <a href="surprise.html"><button class="download-btn">CLAIM</button></a>
+  </div>
+
+  <script>
+    const questions = [
+      {
+        q: "Who is known as the 'Copy Ninja' in Naruto?",
+        options: ["Kakashi Hatake", "Itachi Uchiha", "Jiraiya", "Minato Namikaze"],
+        answer: "Kakashi Hatake"
+      },
+      {
+        q: "Which anime features a notebook that can kill people?",
+        options: ["Bleach", "Death Note", "Tokyo Ghoul", "Erased"],
+        answer: "Death Note"
+      },
+      {
+        q: "Which anime character says 'Plus Ultra'?",
+        options: ["Saitama", "Goku", "Deku", "Light Yagami"],
+        answer: "Deku"
+      },
+      {
+        q: "In Attack on Titan, who is the Colossal Titan initially?",
+        options: ["Levi", "Armin", "Bertholdt", "Eren"],
+        answer: "Bertholdt"
+      },
+      {
+        q: "Who is the captain of the Straw Hat Pirates?",
+        options: ["Zoro", "Luffy", "Sanji", "Shanks"],
+        answer: "Luffy"
+      },
+      {
+        q: "Which anime features a Ghoul named Kaneki?",
+        options: ["Tokyo Ghoul", "Parasyte", "Death Note", "Demon Slayer"],
+        answer: "Tokyo Ghoul"
+      },
+      {
+        q: "What is the main weapon used by Soul Reapers in Bleach?",
+        options: ["Chakra", "Zanpakutō", "Nen", "Quirk"],
+        answer: "Zanpakutō"
+      },
+      {
+        q: "In 'Demon Slayer', what is Nezuko to Tanjiro?",
+        options: ["Cousin", "Sister", "Wife", "Mother"],
+        answer: "Sister"
+      },
+      {
+        q: "Which of these is NOT a member of Akatsuki?",
+        options: ["Kisame", "Pain", "Madara", "Yamato"],
+        answer: "Yamato"
+      },
+      {
+        q: "In 'One Punch Man', who is Saitama's disciple?",
+        options: ["Garou", "King", "Genos", "Mumen Rider"],
+        answer: "Genos"
+      }
+    ];
+
+    // Fisher-Yates Shuffle
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    shuffle(questions); // Randomize the questions
+
+    let current = 0;
+    let correct = 0;
+
+    const questionBox = document.getElementById("question");
+    const optionsBox = document.getElementById("options");
+    const rewardBox = document.getElementById("reward");
+
+    function loadQuestion() {
+      if (current >= questions.length || correct >= 3) {
+        document.getElementById("quizBox").style.display = "none";
+        rewardBox.style.display = "block";
+        return;
+      }
+
+      const q = questions[current];
+      questionBox.textContent = q.q;
+      optionsBox.innerHTML = "";
+
+      q.options.forEach(opt => {
+        const btn = document.createElement("div");
+        btn.className = "option";
+        btn.textContent = opt;
+        btn.onclick = () => {
+          if (opt === q.answer) correct++;
+          current++;
+          loadQuestion();
+        };
+        optionsBox.appendChild(btn);
+      });
+    }
+
+    loadQuestion();
+  </script>
+</body>
+</html>
