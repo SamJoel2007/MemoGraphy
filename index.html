@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HoneyPie AI - Talk to AI Anime girls</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <meta name='viewport' content='width=device-width, initial-scale=1'>
 <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MemoGraphy - Memes!</title>
@@ -14,394 +20,264 @@
   <meta property="og:title" content="MemoGraphy – Memes Galore">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <meta property="og:image" content="https://sdmntprwestus3.oaiusercontent.com/files/00000000-d28c-61fd-b8ad-1c21d1116eb3/raw?se=2025-06-07T07%3A12%3A56Z&sp=r&sv=2024-08-04&sr=b&scid=949647e9-9784-566a-b34c-c3f19d01dd36&skoid=732f244e-db13-47c3-bcc7-7ee02a9397bc&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-06-07T01%3A00%3A36Z&ske=2025-06-08T01%3A00%3A36Z&sks=b&skv=2024-08-04&sig=AcVnFYAMAFKhXk/NN41%2Ba1V2J4HhVW8z4xMlJqvPJSU%3D">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="icon" href="https://sdmntprwestus3.oaiusercontent.com/files/00000000-d28c-61fd-b8ad-1c21d1116eb3/raw?se=2025-06-07T07%3A12%3A56Z&sp=r&sv=2024-08-04&sr=b&scid=949647e9-9784-566a-b34c-c3f19d01dd36&skoid=732f244e-db13-47c3-bcc7-7ee02a9397bc&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-06-07T01%3A00%3A36Z&ske=2025-06-08T01%3A00%3A36Z&sks=b&skv=2024-08-04&sig=AcVnFYAMAFKhXk/NN41%2Ba1V2J4HhVW8z4xMlJqvPJSU%3D" type="image/jpg">
-  <style>
+<style>
+body {font-family: "Lato", sans-serif}
+.mySlides {display: none}
     .bottomBAR {
   position: fixed;
   bottom: 0;
   right: 0;
   padding-top: 8px;
   width: 400px;
-  border: 3px solid orange;
+  border: 3px solid white;
   background-color: black;
   height: 50px;
 }
-    /* [Same CSS styles you already have – no changes needed] */
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #121212;
-      color: #e0e0e0;
-      display: flex;
-    }
-    body.light {
-      background: #fefefe;
-      color: #111;
-    }
-
-    #sidebar { width: 250px; background: #1e1e1e; height: 100vh; padding: 20px; position: fixed; top: 0; left: 0; overflow-y: auto; border-right: 2px solid #333; }
-    #sidebar h3 { color: #ff9800; margin-top: 0; }
-    #sidebar ul { list-style: none; padding: 0; }
-    #sidebar ul li { margin: 10px 0; }
-    #sidebar a, .sidebar-button { color: #90caf9; text-decoration: none; display: block; margin: 10px 0; }
-    .sidebar-button { background-color: #ff9800; color: black; padding: 10px; border-radius: 5px; text-align: center; font-weight: bold; }
-
-    #main-content { margin-left: 270px; width: calc(100% - 270px); }
-
-    h1 { text-align: center; padding: 20px; background: #1e1e1e; margin: 0; color: #ff9800; }
-    #memes-container, #anime-memes-container, #featured-anime-container { display: flex; flex-direction: column; align-items: center; padding: 20px; }
-    .meme {
-      margin: 20px 0;
-      padding: 10px;
-      border: 2px solid #333;
-      border-radius: 10px;
-      background: #1e1e1e;
-      width: 90%;
-      max-width: 500px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.6);
-    }
-    body.light .meme { background: #fff; border-color: #ccc; color: #000; }
-
-    img { width: 100%; border-radius: 8px; }
-    h2 { font-size: 1.1em; margin: 10px 0; color: #ffcc00; }
-    p { font-size: 0.9em; color: #bbb; }
-
-    .like-btn { font-size: 1.5em; cursor: pointer; color: #888; margin-top: 12px; }
-    .liked { color: #e53935; }
-
-    button {
-      background-color: #ff9800;
-      color: #000;
-      border: none;
-      padding: 10px 20px;
-      font-size: 1em;
-      border-radius: 5px;
-      cursor: pointer;
-      margin: 20px auto;
-      display: block;
-    }
-    button:hover { background-color: #e68900; }
-
-    #twitter-feeds {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      padding: 20px;
-      background: #1e1e1e;
-    }
-
-    .twitter-timeline-wrapper {
-      flex: 1 1 300px;
-      max-width: 350px;
-      background: #121212;
-      border: 2px solid #333;
-      border-radius: 10px;
-      padding: 10px;
-    }
-
-    #loading { text-align: center; padding: 10px; font-size: 1em; color: #aaa; }
-
-    .footer {
-      background: #1e1e1e;
-      text-align: center;
-      padding: 20px;
-    }
-    .CustomButton {
-      background-color: #1e1e1e;
-      
-      padding: 15px;
-    }
-    .CustomButton:hover {
-      background-color: gray;
-    }
-    .footer img { width: 60px; height: 60px; object-fit: cover; border-radius: 50%; }
-
-    @media screen and (max-width: 768px) {
-      body { flex-direction: column; }
-      #sidebar {
-        width: 100%; height: auto; position: relative;
-        border-right: none; border-bottom: 2px solid #333;
-        display: flex; flex-wrap: wrap; justify-content: space-around; padding: 10px;
-      }
-      #sidebar ul { display: flex; flex-wrap: wrap; justify-content: center; width: 100%; padding: 0; margin: 0; }
-      #sidebar ul li { margin: 5px 10px; }
-      #sidebar button, .sidebar-button { margin: 5px; font-size: 0.9em; padding: 8px 12px; }
-      #main-content { margin: 0; width: 100%; }
-      h1 { font-size: 1.3em; padding: 15px 10px; }
-      .meme { width: 95%; }
-      .twitter-timeline-wrapper { width: 100% !important; max-width: none; }
-      button { width: 90%; font-size: 1em; }
-    }
-    
-  </style>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</style>
 </head>
 <body>
-<div class="offcanvas offcanvas-start text-bg-dark" id="demo">
-  <div class="offcanvas-header">
-    
-    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
-  </div>
-  <div class="offcanvas-body">
-  <aside id="sidebar">
-    <img src="images/logo.png">  
-    <br><br><br>
-    <h3>📚 Explore</h3>
-    <ul>
-      <li><a href="#memes-container" class="CustomButton">😆 Memes</a></li>
-      <li><a href="#anime-memes-container" class="CustomButton">🌸 Anime Memes</a></li>
-      <li><a href="#lofi" class="CustomButton">🎧 Lofi</a></li>
-      <li><a href="#game" class="CustomButton">🎮 Fun Game</a></li>
-      <li><a href="#featured-anime-container" class="CustomButton">🎬 Featured Anime</a></li>
-      <li><a href="#twitter-feeds" class="CustomButton">🐦 Twitter Feeds</a></li>
-    </ul>
-    <button onclick="loadMemes(1)">🎲 Feeling Lucky</button>
-    <button onclick="toggleTheme()">🌓 Toggle Theme</button>
-    <a class="sidebar-button" href="https://drive.google.com/file/d/1U9XNfuUNpTJ_eMeH2hVOk9qzBwxhn6Mb/view?usp=sharing" target="_blank">💲 DONATE</a>
-    <a class="sidebar-button" href="https://drive.google.com/file/d/1U9XNfuUNpTJ_eMeH2hVOk9qzBwxhn6Mb/view?usp=sharing" target="_blank">📥 DOWNLOAD APP</a>
-    <p style="margin-top: 20px;"><strong>👨‍💻 Sam</strong></p>
-  </aside>
-  </div>
-</div>
-  <!-- Sidebar -->
 
-
-  <!-- Main content -->
-  <div id="main-content">
-    <div class="d-flex align-items-center justify-content-center position-relative" style="background: #1e1e1e; margin: 0;">
-  <!-- 1️⃣ Hamburger toggler -->
-<button
-  class="btn btn-dark me-3"
-  type="button"
-  data-bs-toggle="offcanvas"
-  data-bs-target="#demo"
-  aria-controls="demo"
-  aria-label="Toggle menu"
-  style="font-size: 1.3rem; width: 40px; padding: 4px 6px;"
->
-  &#9776;
-</button>
-
-  <!-- 2️⃣ Your title -->
-  <h1 class="flex-grow-1 text-center mb-0" style="color: #ff9800; padding: 10px 0;">
-    🔥 MemoGraphy - OTAKU HAVEN
-  </h1>
-</div>
-    <br><br>
-    <div id="anime-memes-container"></div>
-    <button id="view-anime">VIEW MORE ANIME MEMES</button>
-    <br>
-    <h1 id="lofi">Lofi Music</h1> <br><br>
-    <div style="text-align: center;">
-      <iframe src="lofi.html" width="400px" height="700px"></iframe>
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-black w3-card">
+    <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+    <a href="#band" class="w3-bar-item w3-button w3-padding-large w3-hide-small">AI MODELS</a>
+    <a href="#tour" class="w3-bar-item w3-button w3-padding-large w3-hide-small">TOUR</a>
+    <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CONTACT</a>
+    <div class="w3-dropdown-hover w3-hide-small">
+      <button class="w3-padding-large w3-button" title="More">MORE <i class="fa fa-caret-down"></i></button>     
+      <div class="w3-dropdown-content w3-bar-block w3-card-4">
+        <a href="#" class="w3-bar-item w3-button">Merchandise</a>
+        <a href="#" class="w3-bar-item w3-button">Extras</a>
+        <a href="#" class="w3-bar-item w3-button">Media</a>
+      </div>
     </div>
-    <br><br>
+    <a href="javascript:void(0)" class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i class="fa fa-search"></i></a>
+  </div>
+</div>
 
-    <h1 id="game">Fun Games</h1> <br><br>
-    <div style="text-align: center;">
-      <div id="demo" class="carousel slide" data-bs-ride="carousel">
+<!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+<div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
+  <a href="#band" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">BAND</a>
+  <a href="#tour" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">TOUR</a>
+  <a href="#contact" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">CONTACT</a>
+  <a href="#" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">MERCH</a>
+</div>
 
-  <!-- Indicators/dots -->
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
-    <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-    <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+<!-- Page content -->
+<div class="w3-content" style="max-width:2000px;margin-top:46px">
+
+  <!-- Automatic Slideshow Images -->
+  <div class="mySlides w3-display-container w3-center">
+    <img src="https://img.freepik.com/free-photo/side-view-anime-girl-hugging-cat_23-2150970941.jpg?ga=GA1.1.38934955.1746614666&semt=ais_hybrid&w=740" style="width:90%">
+    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+      <h3>Anna 23</h3>
+      <p style="color: black;"><b>Hey let's have a fun chat</b></p>   
+    </div>
+  </div>
+  <div class="mySlides w3-display-container w3-center">
+    <img src="https://cdn.pixabay.com/photo/2024/08/01/18/20/anime-8937915_1280.png" style="width:80%">
+    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+      <h3>Mia 19</h3>
+      <p><b>Hey wanna be friends</b></p>    
+    </div>
+  </div>
+  <div class="mySlides w3-display-container w3-center">
+    <img src="https://cdn.pixabay.com/photo/2024/03/21/11/15/ai-generated-8647521_1280.png" style="width:80%">
+    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+      <h3>Claire</h3>
+      <p><b>I'm bored you know? Make me excited</b></p>    
+    </div>
+  </div>
+<style>
+    .msgbtn {
+        color: white;
+        background-color: black;
+        padding: 15px;
+    }
+    .msgbtn:hover {
+        background-color: white;
+        color: black;
+    }
+</style>
+  <!-- The Band Section -->
+  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
+    <h2 class="w3-wide">FIND AI MODELS</h2>
+    <p class="w3-opacity"><i>Top Free AI Anime Chatbots</i></p>
+
+    <div class="w3-row w3-padding-32" style="width: 300px; height: 250px;">
+      <div class="w3-third">
+        <p>Moira</p>
+        <img src="https://cdn.pixabay.com/photo/2023/01/13/16/29/girl-7716485_1280.jpg" class="w3-round w3-margin-bottom" alt="Random Name" style="width:60%">
+        <br><a href="#"><button class="msgbtn">MESSAGE (FREE)</button></a> <br><br>
+      </div>
+      <br>
+      <div class="w3-third">
+        <p>Jeni</p>
+        <img src="https://cdn.pixabay.com/photo/2023/11/10/21/45/hd-wallpaper-8380121_1280.jpg" class="w3-round w3-margin-bottom" alt="Random Name" style="width:60%">
+        <a href="#"><button class="msgbtn">MESSAGE (FREE)</button></a> <br><br>
+      </div>
+      <div class="w3-third">
+        <p>Yuki</p>
+        <img src="https://cdn.pixabay.com/photo/2023/01/27/16/25/anime-7749031_1280.jpg" class="w3-round" alt="Random Name" style="width:60%">
+        <br><br><a href="#"><button class="msgbtn">MESSAGE (FREE)</button></a> <br><br>
+      </div>
+    </div>
+  </div>
+
+  <!-- The Tour Section -->
+  <div class="w3-black" id="tour">
+    <div class="w3-container w3-content w3-padding-64" style="max-width:800px">
+      <h2 class="w3-wide w3-center">ANIME GAMES</h2>
+      <p class="w3-opacity w3-center"><i>Gamers Never Die - They Respawn</i></p><br>
+
+      <div class="w3-row-padding w3-padding-32" style="margin:0 -16px">
+        <div class="w3-third w3-margin-bottom">
+          <img src="https://cdn.pixabay.com/photo/2023/01/27/11/31/anime-7748478_1280.jpg" alt="New York" style="width:100%" class="w3-hover-opacity">
+          <div class="w3-container w3-white">
+            <p><b>Anime Quiz Game</b></p>
+            <p class="w3-opacity">Fri 27 Nov 2024</p>
+            <p>Win the quiz and get your free prize.</p>
+            <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Play Game</button>
+          </div>
+        </div>
+        <div class="w3-third w3-margin-bottom">
+          <img src="https://cdn.pixabay.com/photo/2024/08/01/18/20/girl-8937918_1280.png" alt="Paris" style="width:100%" class="w3-hover-opacity">
+          <div class="w3-container w3-white">
+            <p><b>Catch your Senpai</b></p>
+            <p class="w3-opacity">Sat 28 Nov 2024</p>
+            <p>A fun game to play. Can you beat the score 30?</p>
+            <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Play Game</button>
+          </div>
+        </div>
+        <div class="w3-third w3-margin-bottom">
+          <img src="https://cdn.pixabay.com/photo/2024/03/07/20/07/ai-generated-8619183_1280.jpg" alt="San Francisco" style="width:100%" class="w3-hover-opacity">
+          <div class="w3-container w3-white">
+            <p><b>ZOMBIE GAME</b></p>
+            <p class="w3-opacity">Coming Soon</p>
+            <p>Coming Soon</p>
+            <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'" style="cursor:block;">Play Game</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ticket Modal -->
+  <div id="ticketModal" class="w3-modal">
+    <div class="w3-modal-content w3-animate-top w3-card-4">
+      <header class="w3-container w3-teal w3-center w3-padding-32"> 
+        <span onclick="document.getElementById('ticketModal').style.display='none'" 
+       class="w3-button w3-teal w3-xlarge w3-display-topright">×</span>
+        <h2 class="w3-wide"><i class="fa fa-suitcase w3-margin-right"></i>Tickets</h2>
+      </header>
+      <div class="w3-container">
+        <p><label><i class="fa fa-shopping-cart"></i> Tickets, $15 per person</label></p>
+        <input class="w3-input w3-border" type="text" placeholder="How many?">
+        <p><label><i class="fa fa-user"></i> Send To</label></p>
+        <input class="w3-input w3-border" type="text" placeholder="Enter email">
+        <button class="w3-button w3-block w3-teal w3-padding-16 w3-section w3-right">PAY <i class="fa fa-check"></i></button>
+        <button class="w3-button w3-red w3-section" onclick="document.getElementById('ticketModal').style.display='none'">Close <i class="fa fa-remove"></i></button>
+        <p class="w3-right">Need <a href="#" class="w3-text-blue">help?</a></p>
+      </div>
+    </div>
+  </div>
+<br><br>
+  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
+    <h2 class="w3-wide" id="lofi">MUSIC SPACE</h2>
+    <p class="w3-opacity"><i>Listen to Free Music</i></p>
+
+    <iframe src="lofi.html" width="100%" height="500px"></iframe>
+  </div>
+  <!-- The Contact Section -->
+  <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="contact">
+    <h2 class="w3-wide w3-center">CONTACT</h2>
+    <p class="w3-opacity w3-center"><i>Fan? Drop a note!</i></p>
+    <div class="w3-row w3-padding-32">
+      <div class="w3-col m6 w3-large w3-margin-bottom">
+        <i class="fa fa-map-marker" style="width:30px"></i> Chicago, US<br>
+        <i class="fa fa-phone" style="width:30px"></i> Phone: +00 151515<br>
+        <i class="fa fa-envelope" style="width:30px"> </i> Email: mail@mail.com<br>
+      </div>
+      <div class="w3-col m6">
+        <form action="/action_page.php" target="_blank">
+          <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+            <div class="w3-half">
+              <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
+            </div>
+            <div class="w3-half">
+              <input class="w3-input w3-border" type="text" placeholder="Email" required name="Email">
+            </div>
+          </div>
+          <input class="w3-input w3-border" type="text" placeholder="Message" required name="Message">
+          <button class="w3-button w3-black w3-section w3-right" type="submit">SEND</button>
+        </form>
+      </div>
+    </div>
   </div>
   
-  <!-- The slideshow/carousel -->
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <iframe src="fun_game.html" width="400px" height="700px"></iframe>
-    </div>
-    <div class="carousel-item">
-      <a href="catch_senpai.html"><iframe src="catch_senpai.html" width="400px" height="700px"></iframe></a>
-    </div>
-    <div class="carousel-item">
-      <iframe src="fun_game.html" width="400px" height="700px"></iframe>
-    </div>
-  </div>
-  
-  <!-- Left and right controls/icons -->
-  <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon"></span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-    <span class="carousel-control-next-icon"></span>
-  </button>
+<!-- End Page Content -->
 </div>
-    </div> <br><br>
 
-    <h1>MEMES</h1>
-    <div id="loading">Loading memes...</div>
-    <div id="memes-container"></div>
-    <button id="view-more">VIEW MORE MEMES</button>
+<!-- Image of location/map -->
+<img src="https://cdn.pixabay.com/photo/2024/06/14/03/04/metro-8828747_1280.png" class="w3-image w3-greyscale-min" style="width:100%">
 
-
-    <h1>🎬 Featured Anime</h1>
-    <div id="featured-anime-container"></div>
-    <button id="view-more-anime">VIEW MORE ANIME INFO</button>
-
-    <h1>🐦 Twitter Anime Hashtags</h1>
-    <div id="twitter-feeds">
-      <div class="twitter-timeline-wrapper">
-        <a class="twitter-timeline" data-theme="dark" data-height="400" href="https://twitter.com/hashtag/AnimeMemes">#AnimeMemes</a>
-      </div>
-      <div class="twitter-timeline-wrapper">
-        <a class="twitter-timeline" data-theme="dark" data-height="400" href="https://twitter.com/hashtag/SoloLeveling">#SoloLeveling</a>
-      </div>
-      <div class="twitter-timeline-wrapper">
-        <a class="twitter-timeline" data-theme="dark" data-height="400" href="https://twitter.com/hashtag/Anime">#Anime</a>
-      </div>
-    </div>
-
-    <!-- Ads -->
-    <script async data-cfasync="false" src="//pl26246949.profitableratecpm.com/8c39079b0ff6cc28a0a1802ee89dbde4/invoke.js"></script>
-    <script async data-cfasync="false" src="//pl26246944.profitableratecpm.com/cbc028c5e6af088f3348ea2cdfef0db4/invoke.js"></script>
-    <div id="container-cbc028c5e6af088f3348ea2cdfef0db4"></div>
-
-    <div class="footer">
-      <a href="https://samjoel2007.github.io/HackerVan/images/me.jpg" target="_blank">
-        <img src="https://samjoel2007.github.io/HackerVan/images/me.jpg" alt="Developer Image" />
-      </a>
-      <p><b>Developer: Sam</b></p>
-    </div>
-  </div>
-    <style>
-      .bottomlink {
-        color: orange;
-      }
-      .bottomlink:hover {
-        background-color: gray;
-      }
-    </style>
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
+  <i class="fa fa-facebook-official w3-hover-opacity"></i>
+  <i class="fa fa-instagram w3-hover-opacity"></i>
+  <i class="fa fa-snapchat w3-hover-opacity"></i>
+  <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+  <i class="fa fa-twitter w3-hover-opacity"></i>
+  <i class="fa fa-linkedin w3-hover-opacity"></i>
+  <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+</footer>
 <div class="bottomBAR" style="display: flex; justify-content: space-around; align-items: center; padding: 10px;">
-    <a href="#" style="color: orange;" class="bottomlink"><i class='fas fa-home' style='font-size:30px;'></i></a>
-    <a href="#lofi" style="color: orange;" class="bottomlink"><i class="fa fa-headphones" style="font-size:30px;"></i></a>
-    <a href="#game" class="bottomlink"><i class="fa fa-gamepad" style="font-size:30px;"></i></a>
-    <a href="#" style="color: orange;" class="bottomlink"><i class='fas fa-comment' style='font-size:30px;'></i></a>
-    <a href="#" style="color: orange;" class="bottomlink"><i class='fas fa-bell' style='font-size:30px;'></i></a>
-    <a href="#" style="color: orange;" class="bottomlink"><i class='fas fa-dollar-sign' style='font-size:30px;'></i></a>
-    <a href="#" class="bottomlink"><i class='fas fa-user-circle' style='font-size:30px'></i></a>
+    <a href="#" style="color: white;" class="bottomlink"><i class='fas fa-home' style='font-size:30px;'></i></a>
+    <a href="#lofi" style="color: white;" class="bottomlink"><i class="fa fa-headphones" style="font-size:30px;"></i></a>
+    <a href="#game" class="bottomlink" style="color: white"><i class="fa fa-gamepad" style="font-size:30px;"></i></a>
+    <a href="#" style="color: white;" class="bottomlink"><i class='fas fa-comment' style='font-size:30px;'></i></a>
+    <a href="#" style="color: white;" class="bottomlink" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal"><i class='fas fa-bell' style='font-size:30px;' ></i></a>
+    <a href="#" class="bottomlink" onclick="document.getElementById('id01').style.display='block'" style="color: white;"><i class='fas fa-user-circle' style='font-size:30px'></i></a>
 </div>
-  <script>
-    const shownMemes = new Set();
-    const animeSubreddits = [
-      "Animemes", "AnimeFunny", "NarutoMemes", "WaifuAnime",
-      "FunnyAnimeMemes", "goodanimemes", "anime", "anime_irl",
-      "animequestions", "sololevelling"
-    ];
+<script>
+// Automatic Slideshow - change image every 4 seconds
+var myIndex = 0;
+carousel();
 
-    function getRandomSubreddits(count = 3) {
-      const shuffled = animeSubreddits.sort(() => 0.5 - Math.random());
-      return shuffled.slice(0, count).join('+');
-    }
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}    
+  x[myIndex-1].style.display = "block";  
+  setTimeout(carousel, 4000);    
+}
 
-    function createMemeHTML(meme) {
-      return `
-        <div class="meme">
-          <h2>${meme.title}</h2>
-          <a href="${meme.postLink}" target="_blank" rel="noopener noreferrer">
-            <img src="${meme.url}" alt="${meme.title}" />
-          </a>
-          <p><em>Subreddit: r/${meme.subreddit}</em></p>
-          <div class="like-btn">&#10084;</div>
-          <button onclick="navigator.clipboard.writeText('${meme.url}')">📋 Share</button>
-        </div>`;
-    }
+// Used to toggle the menu on small screens when clicking on the menu button
+function myFunction() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
 
-    function loadMemes(count = 10) {
-      $("#loading").show();
-      fetch(`https://meme-api.com/gimme/${count}`)
-        .then(res => res.json())
-        .then(data => {
-          const memes = data.memes || [data];
-          memes.forEach(meme => {
-            if (!shownMemes.has(meme.url)) {
-              shownMemes.add(meme.url);
-              $("#memes-container").append(createMemeHTML(meme));
-            }
-          });
-        })
-        .catch(err => console.error("Error loading memes:", err))
-        .finally(() => $("#loading").hide());
-    }
-
-    function loadAnimeMemes(count = 15) {
-      const subs = getRandomSubreddits();
-      fetch(`https://meme-api.com/gimme/${subs}/${count}`)
-        .then(res => res.json())
-        .then(data => {
-          const memes = data.memes || [data];
-          memes.forEach(meme => {
-            if (!shownMemes.has(meme.url)) {
-              shownMemes.add(meme.url);
-              $("#anime-memes-container").append(createMemeHTML(meme));
-            }
-          });
-        })
-        .catch(err => console.error("Error loading anime memes:", err));
-    }
-
-    function toggleTheme() {
-      document.body.classList.toggle("light");
-    }
-
-    const featuredAnime = [
-      { title: "Naruto", type: "anime" },
-      { title: "Hell's Paradise", type: "anime" },
-      { title: "Romance", type: "anime", filter: { genre: 22 } } // 22 = Romance
-    ];
-
-    function fetchAnime(item) {
-      const q = encodeURIComponent(item.title);
-      let url = `https://api.jikan.moe/v4/anime?q=${q}&limit=1`;
-      if (item.filter?.genre) url += `&genres=${item.filter.genre}`;
-      return fetch(url)
-        .then(res => res.json())
-        .then(data => data.data[0]);
-    }
-
-    function createAnimeHTML(anime) {
-      return `
-        <div class="meme">
-          <h2>${anime.title || anime.title_english}</h2>
-          <a href="https://myanimelist.net/anime/${anime.mal_id}" target="_blank">
-            <img src="${anime.images.jpg.image_url}" alt="${anime.title}" />
-          </a>
-          <p>${anime.synopsis ? anime.synopsis.slice(0, 150) : "No synopsis available."}...</p>
-        </div>`;
-    }
-
-    function loadFeaturedAnime() {
-      $("#featured-anime-container").empty().append('<p>Loading anime...</p>');
-      Promise.all(featuredAnime.map(fetchAnime))
-        .then(results => {
-          $("#featured-anime-container").empty();
-          results.filter(Boolean).forEach(a => {
-            $("#featured-anime-container").append(createAnimeHTML(a));
-          });
-        })
-        .catch(e => {
-          console.error(e);
-          $("#featured-anime-container").html('<p>Error loading anime.</p>');
-        });
-    }
-
-    loadMemes();
-    loadAnimeMemes();
-    loadFeaturedAnime();
-
-    $("#view-more").on("click", () => loadMemes());
-    $("#view-anime").on("click", () => loadAnimeMemes());
-    $("#view-more-anime").on("click", loadFeaturedAnime);
-    $(document).on("click", ".like-btn", function () {
-      $(this).toggleClass("liked");
-    });
-  </script>
-
-  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+// When the user clicks anywhere outside of the modal, close it
+var modal = document.getElementById('ticketModal');
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
 
 </body>
 </html>
