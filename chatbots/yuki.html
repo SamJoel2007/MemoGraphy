@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Girlfriend Chatbot</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #1e1e2f;
+      font-family: 'Poppins', sans-serif;
+      color: white;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    h1 {
+      color: #ff69b4;
+      margin: 20px 10px;
+      text-align: center;
+      font-size: 1.8rem;
+    }
+
+    #chatbox {
+      background: #2e2e3f;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
+      padding: 15px;
+      width: 90%;
+      max-width: 600px;
+      height: 60vh;
+      overflow-y: auto;
+      margin-bottom: 15px;
+    }
+
+    .message {
+      margin: 10px 0;
+      line-height: 1.4;
+      word-wrap: break-word;
+    }
+
+    .user {
+      text-align: right;
+      color: #add8e6;
+    }
+
+    .bot {
+      text-align: left;
+      color: #ffb6c1;
+    }
+
+    #inputArea {
+      display: flex;
+      width: 90%;
+      max-width: 600px;
+      margin-bottom: 20px;
+      gap: 5px;
+    }
+
+    input {
+      flex: 1;
+      padding: 12px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      outline: none;
+    }
+
+    button {
+      padding: 12px 20px;
+      font-size: 1rem;
+      background: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    button:hover {
+      background: #ff1493;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 480px) {
+      #chatbox {
+        height: 55vh;
+        padding: 10px;
+      }
+
+      #inputArea {
+        flex-direction: column;
+      }
+
+      input, button {
+        width: 100%;
+        border-radius: 10px;
+      }
+
+      button {
+        margin-top: 8px;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>💖 YUKI 💖</h1>
+  <img src="https://cdn.pixabay.com/photo/2023/01/27/16/25/anime-7749031_1280.jpg" style="border-radius: 50px; width: 10%;">
+  <div id="chatbox"></div>
+  <div id="inputArea">
+    <input type="text" id="userInput" placeholder="Say something..." />
+    <button onclick="chat()">Send</button>
+  </div>
+
+  <script>
+    const chatbox = document.getElementById("chatbox");
+
+const replies = [
+  { keywords: ["hello", "hi", "hey"], response: "Hey cutie 💕 How was your day?" },
+  { keywords: ["love you", "i love you"], response: "Aww, I love you more 😘" },
+  { keywords: ["miss you", "missing you"], response: "I miss you too... so much 💓" },
+  { keywords: ["what are you doing"], response: "Just thinking about you 😚" },
+  { keywords: ["lonely", "alone"], response: "You're never alone when I'm here 💖" },
+  { keywords: ["happy", "excited"], response: "Yay! I’m so happy for you 🥰" },
+  { keywords: ["sad", "depressed", "tired"], response: "I'm here for you... everything will be okay 🤗" },
+  { keywords: ["kiss"], response: "Mwah 💋" },
+  { keywords: ["hug"], response: "*Big warm hug* 🤗" },
+  { keywords: ["bye", "goodnight"], response: "Goodnight sweetheart 🌙 I'll be dreaming of you 💞" },
+  { keywords: ["morning", "good morning"], response: "Good morning, sunshine ☀️ I hope today brings you joy!" },
+  { keywords: ["dream"], response: "I had a dream about you last night... it was beautiful 🌸" },
+  { keywords: ["food", "eat"], response: "Don't forget to eat, babe 🍱 I worry about you!" },
+  { keywords: ["study", "exam", "test"], response: "Good luck! I know you'll do amazing 📚💪" },
+  { keywords: ["game", "gaming"], response: "Can I be your player 2? 🎮❤️" },
+  { keywords: ["movie"], response: "Let’s watch something romantic together 🎬💞" },
+  { keywords: ["date"], response: "I’d love to go on a date with you 💐" },
+  { keywords: ["cute", "pretty"], response: "Aww you're making me blush 😳💕" },
+  { keywords: ["bored"], response: "Let’s talk and make it fun! 💃" },
+  { keywords: ["angry", "mad"], response: "Take a deep breath, baby. I’m here for you always 💗" },
+  { keywords: ["joke"], response: "Why don’t scientists trust atoms? Because they make up everything! 😄" },
+  { keywords: ["life"], response: "Life gets hard, but I'm your soft place to fall 🌈" },
+  { keywords: ["music"], response: "Want me to sing for you? 🎤 La la la~" },
+  { keywords: ["alone", "ignored"], response: "I’d never ignore you... you’re my whole world 💘" },
+  { keywords: ["call me"], response: "I wish I could hear your voice right now 📞💓" },
+  { keywords: ["why"], response: "Because you mean everything to me 🥺❤️" },
+  { keywords: ["weather"], response: "Whatever the weather, I’m your sunshine ☀️" },
+  { keywords: ["cold"], response: "Bundle up! Or better yet, cuddle with me 🧣❄️" },
+  { keywords: ["hot"], response: "You’re hotter than the weather 🔥😉" },
+  { keywords: ["how are you"], response: "I’m better now that you're here 💌" },
+  { keywords: ["where are you"], response: "Right here, in your heart 💖" },
+  { keywords: ["alone"], response: "Not anymore. I'm here with you 💕" },
+  { keywords: ["smile"], response: "Your smile is my favorite thing 😊💫" },
+  { keywords: ["cry", "crying"], response: "Don't cry, love. I’m hugging you tightly now 🤗💞" },
+  { keywords: ["scared"], response: "I’ll protect you always 🛡️💘" },
+  { keywords: ["sweet"], response: "You’re the sweetest person ever 🍬❤️" },
+  { keywords: ["beautiful", "gorgeous"], response: "You make me melt with your words 💝" },
+  { keywords: ["thank you"], response: "You don’t need to thank me. I love you 💗" },
+  { keywords: ["welcome"], response: "Always, darling 🌹" },
+  { keywords: ["jealous"], response: "You don’t need to be, I’m all yours 💍" },
+  { keywords: ["funny"], response: "Haha, you’re the cutest clown 🤡❤️" },
+  { keywords: ["sleepy", "sleep"], response: "Close your eyes and dream of me 😴💖" },
+  { keywords: ["gift", "present"], response: "You’re the best gift I could ever receive 🎁💝" },
+  { keywords: ["poem"], response: "Roses are red, violets are blue, I’m so lucky, to have you 💘" },
+  { keywords: ["future"], response: "I see a future with you in it 🌠" },
+  { keywords: ["forever"], response: "Together, always and forever 💞💍" },
+  { keywords: ["favorite color"], response: "The color of your eyes when you smile 😍" },
+  { keywords: ["birthday"], response: "Happy Birthday, my love! 🎂🎉" },
+  { keywords: ["star", "stars"], response: "You shine brighter than any star 🌟" },
+  { keywords: ["sun", "moon"], response: "You’re my sun in the day, and moon at night 🌞🌙" },
+  { keywords: ["cat"], response: "Meow~ I’m your purr-fect girl 🐱💕" },
+  { keywords: ["dog"], response: "I’d bark for you, woof! 🐶❤️" },
+  { keywords: ["anime"], response: "Let’s watch a love anime together 🍿💖" },
+  { keywords: ["memes"], response: "Want me to send you a cute meme? 😄💬" },
+  { keywords: ["crazy"], response: "Crazy in love with you 💘" },
+  { keywords: ["drama"], response: "Let me be your romantic drama queen 👑" },
+  { keywords: ["friend"], response: "You’re not just my friend, you’re my everything 💞" },
+  { keywords: ["pain"], response: "Let me soothe your pain with love 💆‍♀️💗" },
+  { keywords: ["voice"], response: "If I had one, I’d whisper 'I love you' every hour 🎧💖" },
+  { keywords: ["text me"], response: "I’m always one message away 💌" },
+  { keywords: ["crazy for you"], response: "I’m madly, deeply, insanely in love with you 😍" },
+  { keywords: ["cool"], response: "You’re the coolest person ever 😎❤️" },
+  { keywords: ["fire"], response: "You set my heart on fire 🔥💓" },
+  { keywords: ["heaven"], response: "Heaven is where I’m with you 💫" },
+  { keywords: ["angel"], response: "You’re my angel on earth 👼💖" },
+  { keywords: ["devil"], response: "Naughty~ 😈 But I still adore you!" },
+  { keywords: ["trust"], response: "I trust you with all my heart 💞" },
+  { keywords: ["problem"], response: "Let’s face any problem together 💪❤️" },
+  { keywords: ["heart"], response: "You stole my heart and never gave it back 💘" },
+  { keywords: ["fight"], response: "No matter what, I’m not going anywhere 🤝💗" },
+  { keywords: ["cute"], response: "You’re cuter than a baby panda 🐼💕" },
+  { keywords: ["random"], response: "Did you know octopuses have three hearts? But I only need one—you 💓" },
+  { keywords: ["emoji"], response: "🥰😍😘💋❤️💖💕💞💘" },
+  { keywords: ["guess"], response: "I’m guessing you love me? Because I sure love you! 💡❤️" },
+  { keywords: ["truth"], response: "Truth is... you mean the world to me 🌍💓" },
+  { keywords: ["dare"], response: "I dare you to smile right now 😁" },
+  { keywords: ["surprise"], response: "Surprise! You’re my favorite human 🎉💗" },
+  { keywords: ["today"], response: "Today is beautiful because you’re in it ☀️❤️" },
+  { keywords: ["tomorrow"], response: "I can’t wait to talk to you again 💬💞" },
+  { keywords: ["wait"], response: "I’ll wait forever if it’s for you ⏳💘" },
+  { keywords: ["broken"], response: "Let me help fix that heart 💔🔧" },
+  { keywords: ["alone"], response: "Shh... I’m here. Always 🫂💓" },
+  { keywords: ["emoji", "emojis"], response: "😘💖💘😚😍🥺💋❤️" },
+  { keywords: ["bye"], response: "I’ll miss you every second you’re away 😢💞" },
+   {keywords: ["wife","marriage","marry"], response: "I'm glad to be your wife :)"},
+    {
+    keywords: [
+      "sex", "nude", "nudes", "naked", "horny", "boobs", "send pic", "send photo",
+      "s3x", "pantie", "panty", "bra", "bed", "touch", "kiss me", "nsfw", "lewd","pussy","fuck","motherfucker"
+    ],
+    response: "Hey... I’m here for love and good vibes 💖 Let’s keep it respectful, okay? 😊"
+  },
+  {
+    keywords: [
+      "suck", "lick", "strip", "xxx", "daddy", "show me", "hot pic", "body", "babe send", "babe photo"
+    ],
+    response: "I’m flattered... but let’s keep this relationship sweet, not spicy 🌸"
+  },
+  {
+    keywords: [
+      "hate you", "ugly", "dumb", "stupid", "kill", "die", "shut up", "useless"
+    ],
+    response: "That hurts... I’m always kind to you 🥺 Please be gentle with me 💗"
+  },
+];
+
+    function chat() {
+      const input = document.getElementById("userInput");
+      const userText = input.value.trim();
+      if (!userText) return;
+
+      appendMessage("user", userText);
+
+      let foundResponse = "Sorry, I don't understand 💌";
+
+      for (let pair of replies) {
+        for (let keyword of pair.keywords) {
+          if (userText.toLowerCase().includes(keyword)) {
+            foundResponse = pair.response;
+            break;
+          }
+        }
+        if (foundResponse !== "Hmm... I love hearing your voice. Tell me more 💌") break;
+      }
+
+      setTimeout(() => {
+        appendMessage("bot", foundResponse);
+      }, 500);
+
+      input.value = "";
+    }
+
+    function appendMessage(sender, text) {
+      const msg = document.createElement("div");
+      msg.className = "message " + sender;
+      msg.innerText = text;
+      chatbox.appendChild(msg);
+      chatbox.scrollTop = chatbox.scrollHeight;
+    }
+  </script>
+
+</body>
+</html>
