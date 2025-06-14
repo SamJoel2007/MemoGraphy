@@ -118,8 +118,9 @@
 <body>
 
   <h1>💖 JENI 💖</h1>
-  <img src="https://cdn.pixabay.com/photo/2023/11/10/21/45/hd-wallpaper-8380121_1280.jpg" style="border-radius: 50px; width: 5%;">
+  <img src="https://cdn.pixabay.com/photo/2023/11/10/21/45/hd-wallpaper-8380121_1280.jpg" width="400px" height="350px">
   <div id="chatbox"></div>
+
   <div id="inputArea">
     <input type="text" id="userInput" placeholder="Say something..." />
     <button onclick="chat()">Send</button>
@@ -229,7 +230,7 @@ const replies = [
   },
   {
     keywords: [
-      "hate you", "ugly", "dumb", "stupid", "kill", "die", "shut up", "useless","break up","breaking up"
+      "hate you", "ugly", "dumb", "stupid", "kill", "die", "shut up", "useless"
     ],
     response: "That hurts... I’m always kind to you 🥺 Please be gentle with me 💗"
   },
@@ -242,7 +243,7 @@ const replies = [
 
       appendMessage("user", userText);
 
-      let foundResponse = "Sorry, I don't understand 💌";
+      let foundResponse = "Hmm... I love hearing your voice. Tell me more 💌";
 
       for (let pair of replies) {
         for (let keyword of pair.keywords) {
